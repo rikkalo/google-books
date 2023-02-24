@@ -1,5 +1,10 @@
 # Homework for Red Kubes
 
+# User story
+
+As a user, I would like to explore google books database, so I can search books titles by providing an arbitrary string. I am particularly interested
+in seeing the following search results: `book thumbnail`, `title`, `author`, `language`, `link to buy`.
+
 ## Project structure
 
 - **model**: Since the project is a mono-repository, types are stored here that can be shared throughout the project.
