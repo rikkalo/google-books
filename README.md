@@ -1,4 +1,4 @@
-# Homework for Redkubes
+# Homework for Red Kubes
 
 ## Project structure
 
