@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { useEffect, useState } from 'react'
 import type { GoogleBooksResponse } from '@redkubes-homework/model'
 
@@ -11,14 +11,13 @@ export interface BookHookOpts {
 }
 
 export function useBooks({ page, countPerPage, query }: BookHookOpts): GoogleBooksResponse {
-  const [response, setResponse] = useState({ items: [], totalItems: 0 })
+  const [response, setResponse] = useState<GoogleBooksResponse>({ items: [], totalItems: 0 })
 
   useEffect(() => {
     if (query.trim().length) {
       api
         .get('/books', { params: { page, maxNumber: countPerPage, query } })
-        // TODO think about better types
-        .then((result) => {
+        .then((result: AxiosResponse<GoogleBooksResponse>) => {
           setResponse(result.data)
         })
     }
