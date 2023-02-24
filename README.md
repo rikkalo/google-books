@@ -54,7 +54,7 @@ https://localhost:3000/
 Then you need to start the client:
 
 ```bash
-cd server
+cd client
 
 yarn install
 
