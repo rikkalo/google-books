@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    environment:
+      - PORT=5137
+      - API_URL=http://localhost:3000
+    depends_on:
+      - server
+    networks:
+      - server_network
+    ports:
+      - '5137:5137'
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    environment:
+      - PORT=3000
+    networks:
+      - server_network
+    ports:
+      - '3000:3000'
+networks:
+  server_network: 
+    name: server_network

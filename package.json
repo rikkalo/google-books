@@ -1,0 +1,24 @@
+{
+  "name": "redkubes-homework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": "true",
+  "author": "Anastasiia Lopatina <stasialopatina@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "client",
+    "model",
+    "server"
+  ],
+
+  "scripts": {
+    "build:server": "yarn workspace @redkubes-homework/server build",
+    "build:model": "yarn workspace @redkubes-homework/model build",
+    "run:client": "yarn workspace @redkubes-homework/client dev",
+    "run:server": "yarn workspace @redkubes-homework/server dev",
+    "start:server": "yarn workspace @redkubes-homework/server start"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
