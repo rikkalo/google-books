@@ -1,13 +1,8 @@
 # Homework for Red Kubes
 
-# User story
-
-As a user, I would like to explore google books database, so I can search books titles by providing an arbitrary string. I am particularly interested
-in seeing the following search results: `book thumbnail`, `title`, `author`, `language`, `link to buy`.
-
 ## Project structure
 
-- **model**: Since the project is a mono-repository, types are stored here that can be shared throughout the project.
+- **model**: The package which contains sharable types between `client` and `server`.
 - **client**: This is a front-end part, with components for searching a book by query and showing the result of a book search in a table with pagination.
 - **server**: Here is the backend part
 
@@ -23,26 +18,21 @@ docker compose up
 
 ## Local Setup
 
-> Note: run **yarn install** at the root of the project
+First, you need to install all of the project dependencies:
+```bash
+yarn
+```
 
-First you need to build the types into the **model**:
+After you need to build the **model** project:
 
 ```bash
-cd model
-
-yarn install
-
-yarn run build
+yarn build:model
 ```
 
 Now start up the server.
 
 ```bash
-cd server
-
-yarn install
-
-yarn run dev
+yarn run:server
 ```
 
 The server should now be accessible over http on port 3000 at:
@@ -54,11 +44,7 @@ https://localhost:3000/
 Then you need to start the client:
 
 ```bash
-cd client
-
-yarn install
-
-yarn run dev
+yarn run:client
 ```
 
 The client should now be accessible over http on port 5137 at:
