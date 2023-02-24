@@ -11,8 +11,8 @@ export interface PaginationOpts {
 export class GoogleBookService {
   private readonly googleApi = axios.create({ baseURL: process.env.GOOGLE_BOOKS_API })
 
-  public async getBooksWithName(query: string, pagination: PaginationOpts): Promise<Book[]> {
-    return await this.googleApi
+  public getBooksWithName(query: string, pagination: PaginationOpts): Promise<Book[]> {
+    return this.googleApi
       .get('/volumes', {
         params: {
           q: query,
