@@ -1,25 +1,18 @@
-import type { Book } from "@redkubes-homework/model";
-import { Inject, Service as Injectable } from "typedi";
-import { GoogleBookService } from "../services/google-books-service";
-import {
-  Get,
-  Controller,
-  QueryParam,
-  BadRequestError,
-} from "routing-controllers";
+import type { Book } from '@redkubes-homework/model'
+import { Inject, Service as Injectable } from 'typedi'
+import { GoogleBookService } from '../services/google-books-service'
+import { Get, Controller, QueryParam, BadRequestError } from 'routing-controllers'
 
 @Injectable()
-@Controller("/books")
+@Controller('/books')
 export class BooksController {
-  public constructor(
-    @Inject() private readonly bookService: GoogleBookService
-  ) {}
+  public constructor(@Inject() private readonly bookService: GoogleBookService) {}
 
-  @Get("/")
+  @Get('/')
   public async getAllBooksByQuery(
-    @QueryParam("query") query: string,
-    @QueryParam("page") page: number,
-    @QueryParam("maxNumber") maxNumber: number
+    @QueryParam('query') query: string,
+    @QueryParam('page') page: number,
+    @QueryParam('maxNumber') maxNumber: number,
   ): Promise<Book[]> {
     return this.bookService
       .getBooksWithName(query, {
@@ -27,7 +20,7 @@ export class BooksController {
         maxResults: maxNumber,
       })
       .catch((err) => {
-        throw new BadRequestError(err.message);
-      });
+        throw new BadRequestError(err.message)
+      })
   }
 }

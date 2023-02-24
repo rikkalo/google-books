@@ -3,12 +3,20 @@ import { Table } from 'react-chakra-pagination'
 import type { Book } from '@redkubes-homework/model'
 import type { CellContext } from '@tanstack/table-core'
 
-export type BooksTableProps = {
+export interface BooksTableProps {
   books: Book[]
   page: number
   itemsPerPage: number
   totalRegisters: number
   setPage: (page: number) => void
+}
+
+export interface BooksTableItem {
+  thumbnail?: string
+  title: string
+  author: string[]
+  language: string
+  buyLink?: string
 }
 
 export function BooksTable({
@@ -18,7 +26,7 @@ export function BooksTable({
   itemsPerPage,
   totalRegisters,
 }: BooksTableProps) {
-  // TODO This code fixes bug with react-chakra-pagination
+  // TODO: This code fixes the bug with react-chakra-pagination
   const tableData = Array.from({ length: (page - 1) * itemsPerPage })
     .fill({})
     .concat(
@@ -29,7 +37,7 @@ export function BooksTable({
         language: volumeInfo.language,
         buyLink: saleInfo.buyLink,
       })),
-    )
+    ) as BooksTableItem[] | []
 
   const tableColumns = [
     {
