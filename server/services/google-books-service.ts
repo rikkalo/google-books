@@ -9,10 +9,7 @@ export interface PaginationOpts {
 
 @Injectable()
 export class GoogleBookService {
-  private readonly googleApi = axios.create({
-    // TODO Move to config
-    baseURL: 'https://www.googleapis.com/books/v1/',
-  })
+  private readonly googleApi = axios.create({ baseURL: process.env.GOOGLE_BOOKS_API })
 
   public async getBooksWithName(query: string, pagination: PaginationOpts): Promise<Book[]> {
     return await this.googleApi

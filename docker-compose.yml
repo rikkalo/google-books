@@ -4,9 +4,8 @@ services:
     build:
       context: .
       dockerfile: client/Dockerfile
-    environment:
-      - PORT=5137
-      - API_URL=http://localhost:3000
+    env_file:
+      - client/.env
     depends_on:
       - server
     networks:
@@ -17,8 +16,8 @@ services:
     build:
       context: .
       dockerfile: server/Dockerfile
-    environment:
-      - PORT=3000
+    env_file:
+      - server/.env
     networks:
       - server_network
     ports:

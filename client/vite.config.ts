@@ -1,9 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import dotenv from 'dotenv'
 import EnvironmentPlugin from 'vite-plugin-environment'
 
-const PORT = Number(process.env.PORT ?? 5137)
-const API_URL = process.env.API_URL ?? 'http://localhost:3000'
+dotenv.config()
+
+const PORT = Number(process.env.PORT ?? 3000)
+const API_URL = process.env.API_URL ?? 'http://localhost:80'
 
 export default defineConfig({
   server: {
